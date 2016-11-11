@@ -16,7 +16,7 @@ void setup()
 	delay(10);
 
 	endTime = millis() + 10000 * TimeChunk;
-	previousPressed = false;
+	previousPressed = HIGH;
 }
 
 void loop()

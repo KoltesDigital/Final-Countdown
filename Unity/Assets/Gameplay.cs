@@ -61,6 +61,9 @@ public class Gameplay : MonoBehaviour
 		if (currentTime <= 0.0f)
 		{
 			currentTime = 0.0f;
+			UpdateTimeRenderers();
+			separatorRenderer.enabled = true;
+
 			alarmSource.Stop();
 			alarmFX.SetActive(false);
 			neigeFX.SetActive(false);
@@ -79,9 +82,9 @@ public class Gameplay : MonoBehaviour
 
 			float ratio = 1.0f - currentTime / initialTime;
 			backgroundMaterial.SetFloat(backgroundRatioAttributeName, ratio);
-		}
 
-		UpdateTimeRenderers();
+			UpdateTimeRenderers();
+		}
 	}
 
 	void UpdateTimeRenderers()

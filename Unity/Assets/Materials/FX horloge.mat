@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FOND
-  m_Shader: {fileID: 4800000, guid: 7508d9dbea5b7274e9b82415c992257d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_Name: FX horloge
+  m_Shader: {fileID: 10800, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: PIXELSNAP_ON _ALPHABLEND_ON _EMISSION
+  m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 45724ad001b5165448c3a34c90e4be2a, type: 3}
+        m_Texture: {fileID: 2800000, guid: ac54c6b06c0248445bdc674c63d229ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -70,21 +70,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
-        name: _node_3998
+        name: _ToonShade
       second:
-        m_Texture: {fileID: 2800000, guid: 4d989bb4d91e0eb4ea2824665e58233f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _node_8491
-      second:
-        m_Texture: {fileID: 2800000, guid: 4d989bb4d91e0eb4ea2824665e58233f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: PixelSnap
-      second: 0
+      second: 1
     - first:
         name: _BumpScale
       second: 1
@@ -96,16 +90,25 @@ Material:
       second: 1
     - first:
         name: _DstBlend
-      second: 0
+      second: 10
+    - first:
+        name: _GlossMapScale
+      second: 1
     - first:
         name: _Glossiness
       second: 0
+    - first:
+        name: _GlossyReflections
+      second: 1
+    - first:
+        name: _InvFade
+      second: 0.01
     - first:
         name: _Metallic
       second: 0
     - first:
         name: _Mode
-      second: 0
+      second: 2
     - first:
         name: _OcclusionStrength
       second: 1
@@ -113,19 +116,19 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
-        name: _SrcBlend
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
       second: 1
+    - first:
+        name: _SrcBlend
+      second: 5
     - first:
         name: _UVSec
       second: 0
     - first:
         name: _ZWrite
-      second: 1
-    - first:
-        name: _node_2057
-      second: 1
-    - first:
-        name: _node_9588
       second: 0
     m_Colors:
     - first:
@@ -135,23 +138,5 @@ Material:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
-        name: _node_1544
-      second: {r: 0.20588237, g: 0.20588237, b: 0.20588237, a: 1}
-    - first:
-        name: _node_4797
-      second: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
-    - first:
-        name: _node_4864
-      second: {r: 1, g: 0.102, b: 0.059, a: 1}
-    - first:
-        name: _node_4960
-      second: {r: 0.9852941, g: 0.26805797, b: 0.26805797, a: 1}
-    - first:
-        name: _node_6807
-      second: {r: 0.351968, g: 0.5286958, b: 0.7720588, a: 1}
-    - first:
-        name: _node_8825
-      second: {r: 0.26362458, g: 0.37830397, b: 0.6764706, a: 1}
-    - first:
-        name: _node_9688
-      second: {r: 0.3235835, g: 0.40374443, b: 0.6985294, a: 1}
+        name: _TintColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

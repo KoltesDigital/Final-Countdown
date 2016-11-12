@@ -18,6 +18,7 @@ public class Gameplay : MonoBehaviour
 
 	public float timeUpDuration;
 	public GameObject timeUpFX;
+	public AudioClip timeUpAudioClip;
 
 	public GameObject neigeFX;
 
@@ -55,6 +56,7 @@ public class Gameplay : MonoBehaviour
 				alarmFX.SetActive(false);
 				timeUpFX.SetActive(true);
 				timeUpEndTime = Time.time + timeUpDuration;
+				alarmSource.PlayOneShot(timeUpAudioClip);
 			}
 		}
 

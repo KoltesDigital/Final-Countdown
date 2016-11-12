@@ -5795,6 +5795,7 @@ MonoBehaviour:
   alarmFX: {fileID: 94714002}
   timeUpDuration: 2
   timeUpFX: {fileID: 350052456}
+  timeUpAudioClip: {fileID: 8300000, guid: fa001e262afd9294db951b2075ac364e, type: 3}
   neigeFX: {fileID: 2061482511}
   backgroundMaterial: {fileID: 2100000, guid: eaffce683389359429e0fdce58ed4772, type: 2}
   backgroundRatioAttributeName: _node_9588

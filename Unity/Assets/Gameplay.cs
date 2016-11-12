@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.IO;
+using UnityEngine;
 
 public class Gameplay : MonoBehaviour
 {
@@ -33,11 +35,20 @@ public class Gameplay : MonoBehaviour
 	private float currentTime;
 	private float timeUpEndTime;
 	private float deadTime;
+	private string pressDataFilename;
+	private int pressCount;
+	private DateTime startupTime;
 
 	void Start()
 	{
 		currentTime = initialTime;
 		timeUpEndTime = Time.time;
+
+		startupTime = DateTime.Now;
+		pressDataFilename = startupTime.ToString("yyyy-MM-dd_HH-mm");
+		pressCount = 0;
+		SaveData();
+
 		UpdateTimeRenderers();
 	}
 
@@ -57,6 +68,9 @@ public class Gameplay : MonoBehaviour
 				timeUpFX.SetActive(true);
 				timeUpEndTime = Time.time + timeUpDuration;
 				alarmSource.PlayOneShot(timeUpAudioClip);
+
+				++pressCount;
+				SaveData();
 			}
 		}
 
@@ -113,5 +127,14 @@ public class Gameplay : MonoBehaviour
 	void UpdateTimeSegmentRenderer(int number, MeshRenderer renderer)
 	{
 		renderer.material = textMaterials[number];
+	}
+
+	void SaveData()
+	{
+		using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(Application.persistentDataPath, pressDataFilename)))
+		{
+			file.WriteLine(String.Format("Pressed: {0}", pressCount));
+			file.WriteLine(String.Format("During: {0}", DateTime.Now.Subtract(startupTime).TotalSeconds));
+		}
 	}
 }

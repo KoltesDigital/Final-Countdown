@@ -2,6 +2,9 @@
 
 public class Gameplay : MonoBehaviour
 {
+	[Tooltip("DEBUG ONLY! Use this to accelerate time.")]
+	public float timeScale = 1.0f;
+
 	[Tooltip("Initial time in seconds.")]
 	public float initialTime = 300.0f;
 
@@ -15,16 +18,21 @@ public class Gameplay : MonoBehaviour
 	public Material backgroundMaterial;
 	public string backgroundRatioAttributeName;
 
+	public Material[] textMaterials;
+	public MeshRenderer[] textRenderers;
+	public MeshRenderer separatorRenderer;
+
 	private float currentTime;
 
 	void Start()
 	{
 		currentTime = initialTime;
+		UpdateTimeRenderers();
 	}
 
 	void Update()
 	{
-		currentTime -= Time.deltaTime;
+		currentTime -= Time.deltaTime * timeScale;
 
 		if (Input.GetButtonDown(resetInputName))
 		{
@@ -35,6 +43,7 @@ public class Gameplay : MonoBehaviour
 
 		if (currentTime <= 0.0f)
 		{
+			currentTime = 0.0f;
 			// TODO game over
 		}
 		else
@@ -44,8 +53,36 @@ public class Gameplay : MonoBehaviour
 				alarmSource.Play();
 			}
 
-			float ratio = currentTime / initialTime;
+			float ratio = 1.0f - currentTime / initialTime;
 			backgroundMaterial.SetFloat(backgroundRatioAttributeName, ratio);
 		}
+
+		UpdateTimeRenderers();
+	}
+
+	void UpdateTimeRenderers()
+	{
+		int seconds = Mathf.CeilToInt(currentTime);
+		int minutes = seconds / 60;
+		seconds = seconds % 60;
+
+		UpdateTimeSegmentRenderers(minutes, textRenderers[0], textRenderers[1]);
+		UpdateTimeSegmentRenderers(seconds, textRenderers[2], textRenderers[3]);
+
+		separatorRenderer.enabled = (currentTime % 1.0f >= 0.5f);
+	}
+
+	void UpdateTimeSegmentRenderers(int time, MeshRenderer highRenderer, MeshRenderer lowRenderer)
+	{
+		int high = time / 10;
+		int low = time % 10;
+
+		UpdateTimeSegmentRenderer(high, highRenderer);
+		UpdateTimeSegmentRenderer(low, lowRenderer);
+	}
+
+	void UpdateTimeSegmentRenderer(int number, MeshRenderer renderer)
+	{
+		renderer.material = textMaterials[number];
 	}
 }

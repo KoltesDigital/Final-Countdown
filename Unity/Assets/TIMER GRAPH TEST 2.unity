@@ -1964,6 +1964,7 @@ MonoBehaviour:
   alarmFX: {fileID: 94714002}
   timeUpDuration: 2
   timeUpFX: {fileID: 350052456}
+  neigeFX: {fileID: 2061482511}
   backgroundMaterial: {fileID: 2100000, guid: eaffce683389359429e0fdce58ed4772, type: 2}
   backgroundRatioAttributeName: _node_9588
   textMaterials:
@@ -1983,6 +1984,7 @@ MonoBehaviour:
   - {fileID: 1273232433}
   - {fileID: 1642940522}
   separatorRenderer: {fileID: 1033254241}
+  textContainer: {fileID: 1350509179}
 --- !u!4 &273242620
 Transform:
   m_ObjectHideFlags: 0

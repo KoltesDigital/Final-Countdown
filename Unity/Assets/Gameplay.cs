@@ -19,15 +19,19 @@ public class Gameplay : MonoBehaviour
 	public float timeUpDuration;
 	public GameObject timeUpFX;
 
+	public GameObject neigeFX;
+
 	public Material backgroundMaterial;
 	public string backgroundRatioAttributeName;
 
 	public Material[] textMaterials;
 	public MeshRenderer[] textRenderers;
 	public MeshRenderer separatorRenderer;
+	public GameObject textContainer;
 
 	private float currentTime;
 	private float timeUpEndTime;
+	private float deadTime;
 
 	void Start()
 	{
@@ -57,11 +61,17 @@ public class Gameplay : MonoBehaviour
 		if (currentTime <= 0.0f)
 		{
 			currentTime = 0.0f;
-			// TODO game over
+			alarmSource.Stop();
+			alarmFX.SetActive(false);
+			neigeFX.SetActive(false);
+
+			deadTime += Time.deltaTime;
+			deadTime = deadTime % 1.0f;
+			textContainer.SetActive(deadTime < 0.5f);
 		}
 		else
 		{
-			if (currentTime <= alarmTime)
+			if (currentTime <= alarmTime && !alarmSource.isPlaying)
 			{
 				alarmSource.Play();
 				alarmFX.SetActive(true);

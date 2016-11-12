@@ -126,7 +126,7 @@ Material:
       second: 1
     - first:
         name: _node_9588
-      second: 0
+      second: 0.9998827
     m_Colors:
     - first:
         name: _Color

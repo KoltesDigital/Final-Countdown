@@ -1959,8 +1959,11 @@ MonoBehaviour:
   timeScale: 1
   initialTime: 300
   resetInputName: Reset
-  alarmTime: 10
+  alarmTime: 15
   alarmSource: {fileID: 273242621}
+  alarmFX: {fileID: 94714002}
+  timeUpDuration: 2
+  timeUpFX: {fileID: 350052456}
   backgroundMaterial: {fileID: 2100000, guid: eaffce683389359429e0fdce58ed4772, type: 2}
   backgroundRatioAttributeName: _node_9588
   textMaterials:
@@ -2002,11 +2005,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 71ffa1578e37b8d4db449ddca7920b9e, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128

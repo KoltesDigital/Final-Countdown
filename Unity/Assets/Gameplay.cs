@@ -11,9 +11,13 @@ public class Gameplay : MonoBehaviour
 	public string resetInputName = "Reset";
 
 	[Tooltip("Time when the alarm begins in seconds.")]
-	public float alarmTime = 10.0f;
+	public float alarmTime = 15.0f;
 
 	public AudioSource alarmSource;
+	public GameObject alarmFX;
+
+	public float timeUpDuration;
+	public GameObject timeUpFX;
 
 	public Material backgroundMaterial;
 	public string backgroundRatioAttributeName;
@@ -23,10 +27,12 @@ public class Gameplay : MonoBehaviour
 	public MeshRenderer separatorRenderer;
 
 	private float currentTime;
+	private float timeUpEndTime;
 
 	void Start()
 	{
 		currentTime = initialTime;
+		timeUpEndTime = Time.time;
 		UpdateTimeRenderers();
 	}
 
@@ -34,11 +40,18 @@ public class Gameplay : MonoBehaviour
 	{
 		currentTime -= Time.deltaTime * timeScale;
 
-		if (Input.GetButtonDown(resetInputName))
+		if (Time.time >= timeUpEndTime)
 		{
-			currentTime = initialTime;
-			alarmSource.Stop();
-			// TODO reward
+			timeUpFX.SetActive(false);
+
+			if (Input.GetButtonDown(resetInputName))
+			{
+				currentTime = initialTime;
+				alarmSource.Stop();
+				alarmFX.SetActive(false);
+				timeUpFX.SetActive(true);
+				timeUpEndTime = Time.time + timeUpDuration;
+			}
 		}
 
 		if (currentTime <= 0.0f)
@@ -51,6 +64,7 @@ public class Gameplay : MonoBehaviour
 			if (currentTime <= alarmTime)
 			{
 				alarmSource.Play();
+				alarmFX.SetActive(true);
 			}
 
 			float ratio = 1.0f - currentTime / initialTime;

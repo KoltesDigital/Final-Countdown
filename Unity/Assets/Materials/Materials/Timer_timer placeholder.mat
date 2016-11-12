@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FOND
-  m_Shader: {fileID: 4800000, guid: 431ac5281079def48b3c9a7c6c137f4e, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_Name: Timer_timer placeholder
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 45724ad001b5165448c3a34c90e4be2a, type: 3}
+        m_Texture: {fileID: 2800000, guid: a1884c4fdd3a96044a86016757ab350a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -69,16 +69,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _node_8491
-      second:
-        m_Texture: {fileID: 2800000, guid: 4d989bb4d91e0eb4ea2824665e58233f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
     - first:
         name: _BumpScale
       second: 1
@@ -92,8 +83,14 @@ Material:
         name: _DstBlend
       second: 0
     - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
         name: _Glossiness
-      second: 0
+      second: 0.5
+    - first:
+        name: _GlossyReflections
+      second: 1
     - first:
         name: _Metallic
       second: 0
@@ -107,6 +104,12 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
+    - first:
         name: _SrcBlend
       second: 1
     - first:
@@ -115,9 +118,6 @@ Material:
     - first:
         name: _ZWrite
       second: 1
-    - first:
-        name: _node_2057
-      second: 0
     m_Colors:
     - first:
         name: _Color
@@ -125,12 +125,3 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
-    - first:
-        name: _node_4797
-      second: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
-    - first:
-        name: _node_4864
-      second: {r: 1, g: 0.102, b: 0.059, a: 1}
-    - first:
-        name: _node_8825
-      second: {r: 0.26362458, g: 0.37830397, b: 0.6764706, a: 1}

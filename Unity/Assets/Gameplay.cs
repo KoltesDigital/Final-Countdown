@@ -60,7 +60,7 @@ public class Gameplay : MonoBehaviour
 		{
 			timeUpFX.SetActive(false);
 
-			if (Input.GetButtonDown(resetInputName))
+			if (Input.GetButtonDown(resetInputName) && currentTime > 0.0f)
 			{
 				currentTime = initialTime;
 				alarmSource.Stop();

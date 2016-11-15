@@ -35,7 +35,7 @@ public class Gameplay : MonoBehaviour
 	private float currentTime;
 	private float timeUpEndTime;
 	private float deadTime;
-	private string pressDataFilename;
+	private string pressLogFilename;
 	private int pressCount;
 	private DateTime startupTime;
 
@@ -45,9 +45,8 @@ public class Gameplay : MonoBehaviour
 		timeUpEndTime = Time.time;
 
 		startupTime = DateTime.Now;
-		pressDataFilename = startupTime.ToString("yyyy-MM-dd_HH-mm");
+		pressLogFilename = startupTime.ToString("yyyy-MM-dd_HH-mm-ss") + ".log";
 		pressCount = 0;
-		SaveData();
 
 		UpdateTimeRenderers();
 	}
@@ -70,7 +69,7 @@ public class Gameplay : MonoBehaviour
 				alarmSource.PlayOneShot(timeUpAudioClip);
 
 				++pressCount;
-				SaveData();
+				SaveDateTime();
 			}
 		}
 
@@ -129,12 +128,11 @@ public class Gameplay : MonoBehaviour
 		renderer.material = textMaterials[number];
 	}
 
-	void SaveData()
+	void SaveDateTime()
 	{
-		using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(Application.persistentDataPath, pressDataFilename)))
+		using (StreamWriter stream = File.AppendText(Path.Combine(Application.persistentDataPath, pressLogFilename)))
 		{
-			file.WriteLine(String.Format("Pressed: {0}", pressCount));
-			file.WriteLine(String.Format("During: {0}", DateTime.Now.Subtract(startupTime).TotalSeconds));
+			stream.WriteLine(DateTime.Now.ToString("s"));
 		}
 	}
 }
